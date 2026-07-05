@@ -1,4 +1,5 @@
-﻿using AppBlackCat.Vistas.Usuarios;
+﻿using AppBlackCat.Vistas.Servicios;
+using AppBlackCat.Vistas.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,6 +59,11 @@ namespace AppBlackCat.Vistas
         private void btnFrmDashboard_Click(object sender, EventArgs e)
         {
             AbrirFormularioEnPanel(new FrmDashboard());
+        }
+
+        private void btnFrmServicios_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new FrmServicios());
         }
     }
 }

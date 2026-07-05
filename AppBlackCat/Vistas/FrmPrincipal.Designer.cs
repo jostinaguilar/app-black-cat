@@ -147,6 +147,7 @@
             btnFrmServicios.Text = " Servicios";
             btnFrmServicios.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnFrmServicios.UseVisualStyleBackColor = true;
+            btnFrmServicios.Click += btnFrmServicios_Click;
             // 
             // btnFrmProyectos
             // 
