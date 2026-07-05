@@ -83,7 +83,7 @@ namespace AppBlackCat.Vistas
             {
                 try
                 {
-                    _clienteServicio.EliminarCliente(idClienteSeleccionado);
+                    _clienteServicio.Eliminar(idClienteSeleccionado);
 
                     MessageBox.Show("Cliente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -117,7 +117,7 @@ namespace AppBlackCat.Vistas
 
             try
             {
-                var clientesFiltrados = _clienteServicio.BuscarClientes(txtBuscar.Text.Trim());
+                var clientesFiltrados = _clienteServicio.Buscar(txtBuscar.Text.Trim());
                 UI.CargarData(dgvClientes, clientesFiltrados);
 
             }

@@ -58,5 +58,22 @@ namespace AppBlackCat.Utilidades
 
             return texto.StartsWith(letra, StringComparison.OrdinalIgnoreCase);
         }
+
+        public static bool ContraseniaValida(string contrasenia)
+        {
+            if (string.IsNullOrWhiteSpace(contrasenia)) return false;
+
+            if (contrasenia.Length < 8) return false;
+
+            if (!Regex.IsMatch(contrasenia, @"[A-Z]")) return false;
+
+            if (!Regex.IsMatch(contrasenia, @"[a-z]")) return false;
+
+            if (!Regex.IsMatch(contrasenia, @"\d")) return false;
+
+            if (!Regex.IsMatch(contrasenia, @"[!@#$%^&*(),.?""':{}|<>]")) return false;
+
+            return true;
+        }
     }
 }

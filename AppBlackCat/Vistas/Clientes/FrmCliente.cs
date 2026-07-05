@@ -35,7 +35,7 @@ namespace AppBlackCat.Vistas.Clientes
 
             _idEdicion = idCliente;
 
-            this.Text = "Editar Cliente";
+            this.Text = "Editar Cliente | Black Cat";
             lblTitulo.Text = "Editar Cliente";
             btnGuardar.Text = "Actualizar";
 
@@ -65,14 +65,14 @@ namespace AppBlackCat.Vistas.Clientes
 
                 if (_idEdicion == null)
                 {
-                    _clienteServicio.RegistrarCliente(cliente);
+                    _clienteServicio.Registrar(cliente);
                     MessageBox.Show("Cliente registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     cliente.Id = _idEdicion.Value;
 
-                    _clienteServicio.ActualizarCliente(cliente);
+                    _clienteServicio.Actualizar(cliente);
                     MessageBox.Show("Cliente actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 

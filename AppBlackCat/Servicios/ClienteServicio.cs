@@ -15,9 +15,9 @@ namespace AppBlackCat.Servicios
             _repositorio = repositorio;
         }
 
-        public void RegistrarCliente(Cliente nuevoCliente)
+        public void Registrar(Cliente nuevoCliente)
         {
-            ValidarCliente(nuevoCliente);
+            Validar(nuevoCliente);
 
             var clientes = _repositorio.ObtenerTodos();
 
@@ -52,7 +52,7 @@ namespace AppBlackCat.Servicios
             return cliente;
         }
 
-        public void ActualizarCliente(Cliente clienteActualizado)
+        public void Actualizar(Cliente clienteActualizado)
         {
             var clientes = _repositorio.ObtenerTodos();
 
@@ -63,14 +63,14 @@ namespace AppBlackCat.Servicios
                 throw new Exception("No se encontro el cliente a actualizar.");
             }
 
-            ValidarCliente(clienteActualizado);
+            Validar(clienteActualizado);
 
             clientes[index] = clienteActualizado;
 
             _repositorio.GuardarTodos(clientes);
         }
 
-        public void EliminarCliente(int id)
+        public void Eliminar(int id)
         {
             var clientes = _repositorio.ObtenerTodos();
 
@@ -86,7 +86,7 @@ namespace AppBlackCat.Servicios
             _repositorio.GuardarTodos(clientes);
         }
 
-        public List<Cliente> BuscarClientes(string texto)
+        public List<Cliente> Buscar(string texto)
         {
             var clientes = _repositorio.ObtenerTodos();
             var clientesFiltrados = clientes.Where(c =>
@@ -102,7 +102,7 @@ namespace AppBlackCat.Servicios
             return clientesFiltrados;
         }
 
-        public void ValidarCliente(Cliente cliente)
+        public void Validar(Cliente cliente)
         {
             if (Validador.EsVacio(cliente.TipoDocumento))
                 throw new ArgumentException("Seleccione un tipo de documento.");
