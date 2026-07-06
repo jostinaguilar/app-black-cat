@@ -66,5 +66,10 @@ namespace AppBlackCat.Vistas
         {
             AbrirFormularioEnPanel(new FrmCotizaciones());
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

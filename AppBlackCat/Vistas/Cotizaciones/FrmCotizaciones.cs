@@ -58,7 +58,7 @@ namespace AppBlackCat.Vistas.Cotizaciones
             if (!string.IsNullOrWhiteSpace(filtro))
             {
                 lista = lista
-                    .Where(x => x.Cliente.ToLower().Contains(filtro.ToLower()))
+                    .Where(x => x.Cliente.ToLower().Contains(filtro.ToLower()) || x.Estado.ToString().Equals(filtro))
                     .ToList();
             }
 
@@ -122,6 +122,7 @@ namespace AppBlackCat.Vistas.Cotizaciones
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             string textoBusqueda = txtBuscar.Text.Trim();
+            cmbEstado.SelectedIndex = -1;
 
             CargarCotizaciones(textoBusqueda);
         }
@@ -129,7 +130,15 @@ namespace AppBlackCat.Vistas.Cotizaciones
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtBuscar.Text = string.Empty;
+            cmbEstado.SelectedIndex = -1;
             CargarCotizaciones("");
+        }
+
+        private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string filtroEstado = cmbEstado.SelectedItem?.ToString() ?? "";
+
+            CargarCotizaciones(filtroEstado);
         }
     }
 }

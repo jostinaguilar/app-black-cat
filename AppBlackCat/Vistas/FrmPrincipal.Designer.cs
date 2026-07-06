@@ -77,6 +77,7 @@
             btnSalir.Text = " Salir";
             btnSalir.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
             // 
             // btnFrmUsuarios
             // 

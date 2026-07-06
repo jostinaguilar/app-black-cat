@@ -31,6 +31,7 @@
             panelContenedor = new Panel();
             dgvCotizaciones = new DataGridView();
             panel1 = new Panel();
+            cmbEstado = new ComboBox();
             btnRechazar = new Button();
             btnLimpiar = new Button();
             btnAprobar = new Button();
@@ -77,6 +78,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(cmbEstado);
             panel1.Controls.Add(btnRechazar);
             panel1.Controls.Add(btnLimpiar);
             panel1.Controls.Add(btnAprobar);
@@ -90,6 +92,17 @@
             panel1.Padding = new Padding(0, 10, 0, 10);
             panel1.Size = new Size(760, 73);
             panel1.TabIndex = 3;
+            // 
+            // cmbEstado
+            // 
+            cmbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbEstado.FormattingEnabled = true;
+            cmbEstado.Items.AddRange(new object[] { "Pendiente", "Aprobada", "Rechazada" });
+            cmbEstado.Location = new Point(338, 32);
+            cmbEstado.Name = "cmbEstado";
+            cmbEstado.Size = new Size(80, 23);
+            cmbEstado.TabIndex = 31;
+            cmbEstado.SelectedIndexChanged += cmbEstado_SelectedIndexChanged;
             // 
             // btnRechazar
             // 
@@ -106,7 +119,7 @@
             // btnLimpiar
             // 
             btnLimpiar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLimpiar.Location = new Point(355, 31);
+            btnLimpiar.Location = new Point(425, 32);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(60, 23);
             btnLimpiar.TabIndex = 29;
@@ -152,13 +165,13 @@
             // 
             txtBuscar.Location = new Point(3, 31);
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(280, 23);
+            txtBuscar.Size = new Size(260, 23);
             txtBuscar.TabIndex = 24;
             // 
             // btnBuscar
             // 
             btnBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBuscar.Location = new Point(289, 31);
+            btnBuscar.Location = new Point(272, 31);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(60, 23);
             btnBuscar.TabIndex = 25;
@@ -207,5 +220,6 @@
         private Button btnBuscar;
         private Label label1;
         private Button btnRechazar;
+        private ComboBox cmbEstado;
     }
 }
