@@ -120,6 +120,10 @@ namespace AppBlackCat.Vistas.Cotizaciones
             cmbServicios.DisplayMember = "Descripcion";
             cmbServicios.ValueMember = "Id";
             cmbServicios.SelectedIndex = -1;
+
+            dtpFechaEmision.Value = DateTime.Now;
+
+            dtpFechaVigencia.Value = DateTime.Now.AddDays(5);
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
