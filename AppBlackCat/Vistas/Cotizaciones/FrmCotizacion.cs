@@ -182,7 +182,7 @@ namespace AppBlackCat.Vistas.Cotizaciones
                 var nuevaCotizacion = new Cotizacion
                 {
                     ClienteId = int.Parse(txtIdCliente.Text),
-                    UsuarioId = 1,
+                    UsuarioId = Session.UsuarioActivo.Id,
                     FechaEmision = DateOnly.FromDateTime(dtpFechaEmision.Value),
                     FechaVigencia = DateOnly.FromDateTime(dtpFechaVigencia.Value),
                     Detalles = _detallesTemporales,

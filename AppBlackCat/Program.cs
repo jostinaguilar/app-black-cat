@@ -13,7 +13,21 @@ namespace AppBlackCat
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrmPrincipal());
+            // Application.Run(new FrmPrincipal());
+
+            using FrmLogin login = new FrmLogin();
+
+            var resultadoLogin = login.ShowDialog();
+
+            if (resultadoLogin == DialogResult.OK)
+            {
+                Application.Run(new FrmPrincipal());
+            }
+            else
+            {
+                Application.Exit();
+            }
+
         }
     }
 }

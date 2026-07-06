@@ -136,5 +136,20 @@ namespace AppBlackCat.Servicios
             if (!Validador.EsVacio(usuario.CorreoElectronico) && !Validador.EsEmailValido(usuario.CorreoElectronico))
                 throw new ArgumentException("El formato del correo electrónico no es válido.");
         }
+
+        public Usuario Autenticar(string username, string contrasenia)
+        {
+            var usuarios = _repositorio.ObtenerTodos();
+
+            // Buscamos un usuario que coincida exactamente con el nombre de usuario y contraseña
+            var usuarioEncontrado = usuarios.FirstOrDefault(u =>
+                u.NombreUsuario.Equals(username, StringComparison.OrdinalIgnoreCase) &&
+                u.Contrasenia == contrasenia);
+
+            if (usuarioEncontrado == null)
+                throw new Exception("Usuario o contraseña incorrectos.");
+
+            return usuarioEncontrado;
+        }
     }
 }
