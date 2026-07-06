@@ -188,6 +188,12 @@ namespace AppBlackCat.Vistas.Cotizaciones
 
             try
             {
+                if (Validador.EsVacio(txtNumeroDocumento.Text.Trim()))
+                    throw new ArgumentException("Debe ingresar un número de documento.");
+
+                if (!Validador.TieneLongitudExacta(txtNumeroDocumento.Text.Trim(), 8) && !Validador.TieneLongitudExacta(txtNumeroDocumento.Text.Trim(), 11))
+                    throw new ArgumentException("El número de documento debe tener 8 o 11 dígitos.");
+
                 var nuevaCotizacion = new Cotizacion
                 {
                     ClienteId = int.Parse(txtIdCliente.Text),
@@ -203,6 +209,10 @@ namespace AppBlackCat.Vistas.Cotizaciones
                 MessageBox.Show("¡Cotización generada con éxito!");
                 this.DialogResult = DialogResult.OK;
                 this.Close();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
