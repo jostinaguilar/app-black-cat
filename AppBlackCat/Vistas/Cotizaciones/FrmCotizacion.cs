@@ -21,6 +21,8 @@ namespace AppBlackCat.Vistas.Cotizaciones
 
         private List<CotizacionDetalle> _detallesTemporales = new List<CotizacionDetalle>();
 
+        private int? _idCotizacion = null;
+
         public FrmCotizacion()
         {
             InitializeComponent();
@@ -49,7 +51,7 @@ namespace AppBlackCat.Vistas.Cotizaciones
             _clienteServicio = new ClienteServicio(clienteRepositorio);
             _servicioServicio = new ServicioServicio(servicioRepositorio);
             _cotizacionServicio = new CotizacionServicio(cotizacionRepositorio);
-            
+
             this.Text = $"Detalle de Cotización #{idCotizacion}";
             lblTitulo.Text = $"Detalle de Cotización #{idCotizacion}";
 
@@ -62,6 +64,7 @@ namespace AppBlackCat.Vistas.Cotizaciones
         {
             try
             {
+                _idCotizacion = idCotizacion;
                 var cotizacion = _cotizacionServicio.ObtenerPorId(idCotizacion);
                 var cliente = _clienteServicio.ObtenerPorId(cotizacion.ClienteId);
 
@@ -121,9 +124,11 @@ namespace AppBlackCat.Vistas.Cotizaciones
             cmbServicios.ValueMember = "Id";
             cmbServicios.SelectedIndex = -1;
 
-            dtpFechaEmision.Value = DateTime.Now;
-
-            dtpFechaVigencia.Value = DateTime.Now.AddDays(5);
+            if (_idCotizacion == null)
+            {
+                dtpFechaEmision.Value = DateTime.Now;
+                dtpFechaVigencia.Value = DateTime.Now.AddDays(5);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
