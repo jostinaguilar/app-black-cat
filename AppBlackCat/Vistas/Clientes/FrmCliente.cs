@@ -42,6 +42,26 @@ namespace AppBlackCat.Vistas.Clientes
             CargarDatosCliente(idCliente);
         }
 
+        public FrmCliente(string numeroDocumento)
+        {
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            IClienteRepositorio clienteRepositorio = new ClienteRepositorio();
+            _clienteServicio = new ClienteServicio(clienteRepositorio);
+
+            txtNumeroDocumento.Text = numeroDocumento;
+
+            if (numeroDocumento.Length == 8)
+            {
+                cmbTipoDocumento.Text = "DNI";
+            }
+            else if (numeroDocumento.Length == 11)
+            {
+                cmbTipoDocumento.Text = "RUC";
+            }
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

@@ -52,6 +52,15 @@ namespace AppBlackCat.Servicios
             return cliente;
         }
 
+        public Cliente? ObtenerPorDocumento(string numeroDocumento)
+        {
+            var clientes = _repositorio.ObtenerTodos();
+
+            var cliente = clientes.FirstOrDefault(c => c.NumeroDocumento == numeroDocumento);
+
+            return cliente;
+        }
+
         public void Actualizar(Cliente clienteActualizado)
         {
             var clientes = _repositorio.ObtenerTodos();

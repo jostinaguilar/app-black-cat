@@ -1,4 +1,5 @@
-﻿using AppBlackCat.Vistas.Servicios;
+﻿using AppBlackCat.Vistas.Cotizaciones;
+using AppBlackCat.Vistas.Servicios;
 using AppBlackCat.Vistas.Usuarios;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace AppBlackCat.Vistas
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            AbrirFormularioEnPanel(new FrmDashboard());
+            AbrirFormularioEnPanel(new FrmCotizaciones());
         }
 
         public void AbrirFormularioEnPanel(Form formHijo)
@@ -56,14 +57,14 @@ namespace AppBlackCat.Vistas
             AbrirFormularioEnPanel(new FrmUsuarios());
         }
 
-        private void btnFrmDashboard_Click(object sender, EventArgs e)
-        {
-            AbrirFormularioEnPanel(new FrmDashboard());
-        }
-
         private void btnFrmServicios_Click(object sender, EventArgs e)
         {
             AbrirFormularioEnPanel(new FrmServicios());
+        }
+
+        private void btnFormCotizaciones_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new FrmCotizaciones());
         }
     }
 }

@@ -36,10 +36,17 @@ namespace AppBlackCat.Vistas.Servicios
             }
         }
 
-        public void CargarServicios()
+        public void CargarServicios(string filtro = "")
         {
             var servicios = _servicioServicio.ObtenerTodos();
             var serviciosOrdenados = servicios.OrderByDescending(s => s.Id).ToList();
+
+            if (!string.IsNullOrWhiteSpace(filtro))
+            {
+                serviciosOrdenados = serviciosOrdenados
+                    .Where(s => s.Descripcion.ToLower().Contains(filtro.ToLower()))
+                    .ToList();
+            }
 
             UI.CargarData(dgvServicios, serviciosOrdenados);
         }
@@ -67,6 +74,19 @@ namespace AppBlackCat.Vistas.Servicios
             {
                 CargarServicios();
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string filtro = txtBuscar.Text.Trim();
+
+            CargarServicios(filtro);
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtBuscar.Text = string.Empty;
+            CargarServicios();
         }
     }
 }
